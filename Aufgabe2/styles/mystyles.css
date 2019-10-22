@@ -1,0 +1,27 @@
+* {font-family: Verdana;}
+header{background-color: #AFAFAF;
+color: #FF5F00;
+text-align: center;}
+nav{
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+#Table-header{background-color: #76B900;color: white;}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr:hover{
+    background-color:#edf5df;
+}
+table{
+    box-shadow: 10px 10px #7d7d7d;
+}
+a{
+    border: 2px solid grey;
+    border-radius: 5px;
+    color:white;
+    font-weight: bold;
+    background-color: #0082D1;
+
+}
