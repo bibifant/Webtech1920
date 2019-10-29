@@ -6,7 +6,10 @@ nav{
     padding-bottom: 50px;
     padding-top: 50px;
 }
-#Table-header{background-color: #76B900;color: white;}
+#Table-header{
+    background-color: #76B900;
+    color: white;}
+
 table, th, td{
     border: 1px solid black;
     border-collapse: collapse;
@@ -16,6 +19,8 @@ tr:hover{
 }
 table{
     box-shadow: 10px 10px #7d7d7d;
+    margin-left: auto;
+    margin-right: auto;
 }
 a{
     border: 2px solid grey;
@@ -24,4 +29,15 @@ a{
     font-weight: bold;
     background-color: #0082D1;
 
+}
+#Teilnahmeliste{
+    padding-bottom: 10px;
+}
+footer{
+    background-color: #FF5F00;
+    text-align: center;
+}
+h1{
+    text-align: left;
+    padding-left: 29%;
 }
