@@ -11,8 +11,9 @@
 </head>
 <body>
 <div class="container">
-    <h1>Teilnehmerinnen</h1>
+    <h1>Teilnehmer*innen</h1>
     <?php
+
     /*  die print_r()-Funktion ist nur zur Kontrolle, ob das $members-Array
         befüllt ist. Kommentieren Sie diese Anweisung aus.
         Das Auslesen des $members-Array erfolgt dann unten in der Tabelle
@@ -35,7 +36,6 @@
     function simpleTable($Vorname, $Nachname, $EMail, $id){
 
             echo "<tr> <td>$Vorname</td> <td>$Nachname</td> <td>$EMail</td><td><a href='id=$id'>edit</a></td>";
-
     }
 
 /*echo $members[1][1];
@@ -58,18 +58,15 @@
 $vorname='';
 $nachname='';
 $email='';
-$id=0;
-$editMode=false;
+$id='0';
 /*einzelne Zeilen der mockuparray.php Datei ausgeben: */
 
-
-
-if(!$editMode){
+if(isset($_GET)){
 for($j=0; $j<50; $j++){
     for ($i=0;$i<1; $i++){
-    simpleTable($members[$j][$i], $members[$j][$i+1], $members[$j][$i+2],count($members[$j][$i]));
-
-    }    $id=$j;
+    simpleTable($members[$j][$i], $members[$j][$i+1], $members[$j][$i+2],$j);
+    }
+    $id=$j;
 }
 }
 elseif(isset($_POST['submit'])){
@@ -83,7 +80,7 @@ elseif(isset($_POST['submit'])){
         $email=$_POST['email'];
     }
 }
-printf('Vorname: %s <br> Nachname:%s <br> E-Mail: %s', htmlspecialchars($vorname, ENT_QUOTES), htmlspecialchars($nachname, ENT_QUOTES), htmlspecialchars($email, ENT_QUOTES))
+printf('Vorname: %s <br> Nachname:%s <br> E-Mail: %s <br> ID: %s', htmlspecialchars($vorname, ENT_QUOTES), htmlspecialchars($nachname, ENT_QUOTES), htmlspecialchars($email, ENT_QUOTES), $id)
 
 
 ?>
