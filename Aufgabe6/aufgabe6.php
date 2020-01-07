@@ -13,7 +13,6 @@
 <div class="container">
     <h1>Teilnehmer*innen</h1>
     <?php
-
     /*  die print_r()-Funktion ist nur zur Kontrolle, ob das $members-Array
         befüllt ist. Kommentieren Sie diese Anweisung aus.
         Das Auslesen des $members-Array erfolgt dann unten in der Tabelle
@@ -37,7 +36,6 @@
 
             echo "<tr> <td>$Vorname</td> <td>$Nachname</td> <td>$EMail</td><td><a href='id=$id'>edit</a></td>";
     }
-
 /*echo $members[1][1];
 
     $memberValues=implode(" ", $members[1]);
