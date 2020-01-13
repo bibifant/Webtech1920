@@ -28,7 +28,10 @@ a{
     color:white;
     font-weight: bold;
     background-color: #0082D1;
-
+}
+a:hover{
+    color: #FF5F00;
+    background-color: #AFAFAF;
 }
 #Teilnahmeliste{
     padding-bottom: 10px;
