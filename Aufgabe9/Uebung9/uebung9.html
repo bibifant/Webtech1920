@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Uebung 9</title>
+    <style>
+        #wuerfel {
+            min-height:200px;
+            min-width:200px;
+            background-color:darkslateblue;
+            color:white;
+            line-height: 200px;
+            font-size:4em;
+            font-weight:bold;
+            text-align:center;}
+
+        footer, header{
+            background-color: darkgray;
+            color: white;
+            width: 100%;
+            height: 80px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #main2{
+            display: none;
+        }
+
+        footer>a, footer>a:visited, footer>a:hover, footer>a:link{
+            color: white;
+            text-decoration: none;
+        }
+        @media screen and (max-width: 768px){
+        #weg{
+        display:none;
+        }
+        #formular{
+            padding-top: 40px;
+        }}
+    </style>
+</head>
+
+
+<body onload="controller()">
+<div class="container-fluid">
+   <header>
+    <h1 id="h1">ein Spiel</h1>
+    </header>
+    <main id="main1" class="row">
+        <div id="playerList" class="col-12 col-md-2 list-group">
+            <h3>Auswahl Spielerin</h3>
+        </div>
+        <div id="weg" style="text-align: center " class="col-12 col-md-3">
+            <h3>oder</h3>
+        </div>
+        <div id="formular" class="col-12 col-md-7">
+            <h3>neue Spielerin anlegen</h3>
+            <form method="get">
+                <input type="text" class="form-control" name="name" placeholder="Name" style="...">
+                <button type="submit" class="btn btn-primary">neue Spielerin anlegen</button>
+            </form>
+        </div>
+    </main>
+    <main id="main2" class="row">
+        <div id="divAnz">
+            <h3 id="h3">Anzahl Zuege : 0</h3>
+        </div>
+        <main class="row">
+            <div class="col-12 col-md-4">
+                <div id="wuerfel" class="col-4" onclick="wuerfel()">
+
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <h5>Liste der Würfe</h5>
+                <ul class="list-group" id="ul1">
+
+                </ul>
+            </div>
+        </main>
+
+    </main>
+
+<footer>
+    <a href="http://webtech.f4.htw-berlin.de/~s0558599/Webtech1920/">
+        Name: Laura Hartstein
+        Matrikelnummer: s0558599
+    </a>
+</footer>
+</div>
+</body>
+<script>
+
+    function controller() {
+        var urlSearchParams = new URLSearchParams(window.location.search);
+        if(!urlSearchParams.has('name')){
+        var player = [{"name": "Susan", "moves": 12},
+            {"name": "Catherine", "moves": 13},
+            {"name": "Anne", "moves": 11},
+            {"name": "Bonnie", "moves": 16},
+            {"name": "Rebecca", "moves": 10},
+            {"name": "Margaret", "moves": 17},
+            {"name": "Deborah", "moves": 15}];
+
+        createList(player);
+        }
+        else{
+        document.getElementById('main1').style.display='none';
+        document.getElementById('main2').style.display='block';
+        let name= urlSearchParams.get('name');
+        document.getElementById('h1').innerText = name+ " spielt";
+        }
+    }
+        function createList(player) {
+                   let playerList = document.getElementById('playerList');
+                   for(let i=0; i<player.length; i++){
+                       let a = document.createElement('a');
+                       a.classList.add('list-group-item', 'list-group-item-action');
+                       a.href = 'uebung9?name='+player[i].name;
+                       a.innerText=player[i].name+'('+player[i].moves +')';
+                       playerList.appendChild(a);
+                   }
+        }
+    var anzZuege=0;
+        function wuerfel() {
+            if(document.getElementById('wuerfel').innerText!=6){
+            let wurf = Math.floor(Math.random()*6)+1;
+            anzZuege++;
+            document.getElementById('wuerfel').innerHTML=wurf;
+            document.getElementById('h3').innerHTML='Anzahl Zuege: '+ anzZuege;
+            let li = document.createElement('li');
+            li.classList.add('list-group-item', 'list-group-item-action');
+            if(wurf<6){
+                li.innerText=anzZuege+'. Wurf: '+wurf;
+            }
+            else{
+                li.innerHTML = '<a href="uebung9.html" style="color:red;">'+ anzZuege + '. Wurf: 6 --> Ende (Startseite)</a>';
+            }
+            document.getElementById('ul1').appendChild(li);
+        }}
+
+</script>
+</html>
