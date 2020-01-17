@@ -1,4 +1,3 @@
-//$_GET['spalten']
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,26 +144,30 @@
 			img.src=staedte[i].bild;
 			img.style.height='60px';
 			img.setAttribute('alt', staedte[i].stadt);
+			img.addEventListener('click', clonePicture);
 			_td.appendChild(img);
 			_tr.appendChild(_td);
 
 			tbody.appendChild(_tr);
 			}
 
-
+		}
 		table.appendChild(thead); //loeschen?
 		table.appendChild(tbody);
 		tableDiv.appendChild(table);
-	}
+
 
 	}
 
 	// hier noch eine Funktion, die das Bild, auf das geklickt wurde, in
 	// das Div "unten" clont
-if
 
-
-
+	function clonePicture(event) {
+		let divPicture = document.getElementById('unten');
+		let picture = event.currentTarget;
+		let _clonePic = picture.cloneNode(false);
+		divPicture.appendChild(_clonePic);
+	}
 </script>
 </body>
 </html>
